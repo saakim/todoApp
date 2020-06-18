@@ -115,3 +115,10 @@ input[type=checkbox]
   transition: 0.3s;
   border-color: white;
 }
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #A0A0A0;
+  color: white;
+}
