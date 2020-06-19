@@ -4,7 +4,7 @@ This app adds TODOs and tracks the number of total
 TODOs as well as the number of unchecked TODOs.
 
 ## Instructions
-Download all of the files and open [index.html] file on Chrome browser to run the project.
+Download all of the files and open [index.html](/script.js) file on Chrome browser to run the project.
 Make sure that [script.js](/script.js) and [styles.css](/styles.css)
 are in the same local directory. 
 
