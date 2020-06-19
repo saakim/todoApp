@@ -1,6 +1,20 @@
 // localStorage.clear()
 var counter
+//change color by user
+var picker = document.getElementById('colorPicker')
+var box = document.getElementById('header')
+picker.addEventListener('change', function(){
+  box.style.backgroundColor = this.value;
+  window.localStorage.setItem('color', JSON.stringify(this.value));
+})
+//remember color from last session
+if(localStorage.getItem('color')){
+  var box = document.getElementById('header');
+  var color = localStorage.getItem('color')
+  box.style.backgroundColor = color.slice(1,-1)
+}
 
+//update counters from last session
 if(localStorage.getItem('counter')){
   counter = localStorage.getItem('counter')
   document.getElementById('item-count').innerHTML = parseInt(localStorage.getItem('item-count'))
@@ -8,6 +22,7 @@ if(localStorage.getItem('counter')){
 }else{
   counter = 0
 }
+
 var ul = document.getElementById("todo-list");
 //enable pressing enter to submit todo list item
 document.getElementById("myInput").addEventListener( "keydown", function( e ) {
@@ -18,6 +33,7 @@ document.getElementById("myInput").addEventListener( "keydown", function( e ) {
     }
 }, false);
 
+//add new todo item
 function newTodo() {
   var input = document.getElementById("myInput").value;
   if(input !== ""){
@@ -32,8 +48,10 @@ function newTodo() {
     let txt = document.createTextNode("x");
     button.setAttribute("type", "checkbox")
     button.id = "b"+counter
+    //add buttons to array
     button.setAttribute("onClick", "done(this.id)");
     span.className = "close";
+
     span.id = "x"+counter
     span.setAttribute("onClick", "remove(this.id)");
     span.appendChild(txt);
@@ -56,6 +74,7 @@ function newTodo() {
   }
 }
 
+//remove todo item
 function remove(clicked_id){
   //update item-count
   let itemCount = parseInt(document.getElementById('item-count').innerHTML)-1
@@ -70,19 +89,20 @@ function remove(clicked_id){
     if(value > 0){
       let uncheckedCount = parseInt(document.getElementById('unchecked-count').innerHTML)-1
       document.getElementById('unchecked-count').innerHTML = uncheckedCount
-      window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount));
+      window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount))
     }
   }
   let id = clicked_id.replace( /^\D+/g, '')
-  console.log(id)
   document.getElementById(id).remove()
   localStorage["list"] = ul.innerHTML
+  localStorage.removeItem(thenum)
+
 }
 
+//when box is checked
 function done(clicked_id){
   let value = document.getElementById('unchecked-count').innerHTML
   let button = document.getElementById(clicked_id)
-  
   //get the number id
   let thenum = clicked_id.replace( /^\D+/g, '')
   let li = document.getElementById(thenum)
@@ -93,13 +113,16 @@ function done(clicked_id){
     if(value > 0){
       let uncheckedCount = parseInt(document.getElementById('unchecked-count').innerHTML)-1
       document.getElementById('unchecked-count').innerHTML = uncheckedCount
-      window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount));
+      window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount))
     }
-  } else {
-      li.setAttribute("class", "todo-checkbox")
-      let uncheckedCount = parseInt(document.getElementById('unchecked-count').innerHTML)+1
-      document.getElementById('unchecked-count').innerHTML = uncheckedCount
-      window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount));
+    localStorage[clicked_id] = 'false'
+  } 
+  else {
+    li.setAttribute("class", "todo-checkbox")
+    let uncheckedCount = parseInt(document.getElementById('unchecked-count').innerHTML)+1
+    document.getElementById('unchecked-count').innerHTML = uncheckedCount
+    window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount))
+    localStorage[clicked_id] = 'true'
   }
   localStorage["list"] = ul.innerHTML
 }
@@ -107,3 +130,18 @@ function done(clicked_id){
 if (localStorage["list"]) {
   ul.innerHTML = localStorage["list"];
 }
+
+//keep checkboxes checked after refresh
+$(function() {
+  $('[type="checkbox"]').each(function() {
+    var $this = $(this),
+      name = $this.attr('id');
+    $this.prop('checked', localStorage[name] === 'true');
+  });
+});
+
+$('[type="checkbox"]').on('change', function() {
+  var $this = $(this),
+    name = $this.attr('id');
+  localStorage[name] = $this.is(':checked');
+});
