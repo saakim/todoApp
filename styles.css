@@ -15,6 +15,16 @@ ul {
   list-style-type: none;
 }
 
+.colorPicker{
+  position: relative;
+  right: -50%;
+}
+
+input[type="color"] {
+  width: 30px;
+  height: 20px;
+}
+
 .center {
   align-self: center;
 }
