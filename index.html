@@ -3,12 +3,15 @@
   <head>
     <title>TODO App</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   </head>
   <body>
     <div class="container center">
-      <div class = "header">
+      <div class = "header" id="header">
+        <div class = "colorPicker">
+          <input type="color" name="colorPicker" id="colorPicker" title="Choose Color" />
+        </div>
         <h1 class="center title">My TODO List</h1>
         <div class="flow-right controls">
           <span>Item count: <span id="item-count">0</span></span>
@@ -24,6 +27,5 @@
     </div>
     <footer class="footer"> &copy; Copyright Sabrina Kim</footer>
     <script src="./script.js"></script>
-    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   </body>
 </html>
