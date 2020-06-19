@@ -115,14 +115,14 @@ function done(clicked_id){
       document.getElementById('unchecked-count').innerHTML = uncheckedCount
       window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount))
     }
-    localStorage[clicked_id] = 'false'
+    localStorage[clicked_id] = 'true'
   } 
   else {
     li.setAttribute("class", "todo-checkbox")
     let uncheckedCount = parseInt(document.getElementById('unchecked-count').innerHTML)+1
     document.getElementById('unchecked-count').innerHTML = uncheckedCount
     window.localStorage.setItem('unchecked-count', JSON.stringify(uncheckedCount))
-    localStorage[clicked_id] = 'true'
+    localStorage[clicked_id] = 'false'
   }
   localStorage["list"] = ul.innerHTML
 }
