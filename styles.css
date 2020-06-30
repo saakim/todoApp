@@ -107,7 +107,7 @@ input[type=checkbox]
 }
 
 .header {
-  background-color: #FF9933;
+  background-color: rgb(173,148,148);
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -131,4 +131,21 @@ footer {
   padding: 3px;
   background-color: #A0A0A0;
   color: white;
+}
+
+.calButton{
+  border: none;
+  color: white;
+  font-size: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+  height: 25px;
+  width: 60px;
+  background: #80aaff;
+  position: absolute;
+}
+
+.cal{
+  margin: 10px 70px;
+  text-align: left;
 }
