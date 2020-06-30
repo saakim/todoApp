@@ -1,5 +1,6 @@
 // localStorage.clear()
 var counter
+var calClicked = false
 //change color by user
 var picker = document.getElementById('colorPicker')
 var box = document.getElementById('header')
@@ -48,10 +49,8 @@ function newTodo() {
     let txt = document.createTextNode("x");
     button.setAttribute("type", "checkbox")
     button.id = "b"+counter
-    //add buttons to array
     button.setAttribute("onClick", "done(this.id)");
     span.className = "close";
-
     span.id = "x"+counter
     span.setAttribute("onClick", "remove(this.id)");
     span.appendChild(txt);
@@ -125,6 +124,19 @@ function done(clicked_id){
     localStorage[clicked_id] = 'false'
   }
   localStorage["list"] = ul.innerHTML
+}
+
+function googleCal(){
+  var elem = document.getElementById('calendar')
+  if(!calClicked){
+    calClicked = true
+    iframe = ''
+    elem.innerHTML += iframe
+  }else{
+    var cal = document.getElementById('cal')
+    cal.remove()
+    calClicked = false
+  }
 }
 
 if (localStorage["list"]) {
