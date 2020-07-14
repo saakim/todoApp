@@ -3,10 +3,29 @@
   <head>
     <title>TODO App</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+    <button class="settings" id="myBtn"><i class="fa fa-gear"></i> </button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add Google Calendar</h3>
+        <p>Instructions:</p>
+        <ol>
+          <li> On a computer, open Google Calendar.</li>
+          <li> In the top right corner, click the Settings button and then Settings.</li>
+          <li> On the left side of the screen, click the name of the calendar you want to add, which is located under "Settings for my calendars." </li>
+          <li>In the "Integrate calendar" section, copy the "Public URL to this calendar."</li>
+          <li>Paste the link in the text box below.</li>
+        </ol>
+        <input type="text" id="calText" placeholder="Add calendar link">
+        <input type="submit" value="Add" onclick= "addCal()" class="add">
+      </div>
+    </div>
     <div class="container center">
       <div class = "header" id="header">
         <div class = "colorPicker">
