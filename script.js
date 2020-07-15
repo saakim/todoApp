@@ -50,7 +50,7 @@ function newTodo() {
     button.setAttribute("type", "checkbox")
     button.id = "b"+counter
     button.setAttribute("onClick", "done(this.id)");
-    span.className = "close";
+    span.className = "closed";
     span.id = "x"+counter
     span.setAttribute("onClick", "remove(this.id)");
     span.appendChild(txt);
