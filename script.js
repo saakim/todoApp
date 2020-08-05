@@ -142,7 +142,6 @@ function googleCal(){
   if(!calClicked){
     if(src){
       calClicked = true
-    // src = "https://calendar.google.com/calendar/b/0/embed?height=600&amp;wkst=1&amp;bgcolor=%237986CB&amp;ctz=Asia%2FSeoul&amp;src=c2Fha2ltQHVtaWNoLmVkdQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043"
     var iframe = '<iframe id="cal" class="cal" src='+src+ 'style="border:solid 1px #777" width="500" height="400" frameborder="0" scrolling="no"></iframe>'
     elem.innerHTML += iframe
     }
